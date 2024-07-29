@@ -4,7 +4,6 @@
 
 /* ========================================== TAILWIND STYLES */
 @layer base {
-
   /* Remove scrollbar */
   .remove-scrollbar::-webkit-scrollbar {
     width: 0px;
@@ -28,18 +27,17 @@
 }
 
 @layer utilities {
-
   /* ===== UTILITIES */
   .sidebar {
     @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
   }
 
   .left-sidebar {
-    @apply hidden lg: flex;
+    @apply hidden lg:flex;
   }
 
   .right-sidebar {
-    @apply hidden xl: flex;
+    @apply hidden xl:flex;
   }
 
   .clip-text {
@@ -51,11 +49,11 @@
   }
 
   .header {
-    @apply text-32-bold md: text-36-bold;
+    @apply text-32-bold md:text-36-bold;
   }
 
   .sub-header {
-    @apply text-18-bold md: text-24-bold;
+    @apply text-18-bold md:text-24-bold;
   }
 
   .container {
@@ -67,11 +65,11 @@
   }
 
   .side-img {
-    @apply hidden h-full object-cover md: block;
+    @apply hidden h-full object-cover md:block;
   }
 
   .copyright {
-    @apply text-14-regular justify-items-end text-center text-dark-600 xl: text-left;
+    @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
   }
 
   /* ==== SUCCESS */
@@ -80,20 +78,20 @@
   }
 
   .request-details {
-    @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 py-8 md: w-fit md:flex-row;
+    @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 py-8 md:w-fit md:flex-row;
   }
 
   /* ===== ADMIN */
   .admin-header {
-    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl: px-12;
+    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
   }
 
   .admin-main {
-    @apply flex flex-col items-center space-y-6 px-[5%] pb-12 xl: space-y-12 xl:px-12;
+    @apply flex flex-col items-center space-y-6 px-[5%] pb-12 xl:space-y-12 xl:px-12;
   }
 
   .admin-stat {
-    @apply flex w-full flex-col justify-between gap-5 sm: flex-row xl:gap-10;
+    @apply flex w-full flex-col justify-between gap-5 sm:flex-row xl:gap-10;
   }
 
   /* ==== FORM */
@@ -102,12 +100,12 @@
   }
 
   .checkbox-label {
-    @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled: cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+    @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
   }
 
   /* ==== File Upload */
   .file-upload {
-    @apply text-12-regular flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-5;
+    @apply text-12-regular flex cursor-pointer  flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-5;
   }
 
   .file-upload_label {
@@ -201,19 +199,19 @@
   }
 
   .shad-input {
-    @apply bg-dark-400 placeholder: text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
   }
 
   .shad-input-icon {
-    @apply bg-dark-400 placeholder: text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
   }
 
   .shad-textArea {
-    @apply bg-dark-400 placeholder: text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
   }
 
   .shad-combobox-item {
-    @apply data-[disabled=true]: pointer-events-none data-[disabled=true]:opacity-50 !important;
+    @apply data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 !important;
   }
 
   .shad-combobox-trigger {
@@ -221,7 +219,7 @@
   }
 
   .shad-select-trigger {
-    @apply bg-dark-400 placeholder: text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
+    @apply bg-dark-400  placeholder:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
   }
 
   .shad-select-content {
@@ -233,7 +231,7 @@
   }
 
   .shad-dialog button {
-    @apply focus: ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+    @apply focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
   }
 
   .shad-error {
@@ -245,7 +243,7 @@
   }
 
   .shad-table-row-header {
-    @apply border-b border-dark-400 text-light-200 hover: bg-transparent !important;
+    @apply border-b border-dark-400 text-light-200 hover:bg-transparent !important;
   }
 
   .shad-table-row {
@@ -265,17 +263,17 @@
   }
 
   .shad-sheet-content button {
-    @apply top-2 focus: ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+    @apply top-2 focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
   }
 
   /* =====  REACT PHONE NUMBER INPUT OVERRIDES */
   .input-phone {
-    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder: text-dark-600 border-dark-500 !important;
+    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-dark-600 border-dark-500 !important;
   }
 
   /* =====  REACT DATE PICKER OVERRIDES */
   .date-picker {
-    @apply overflow-hidden border-transparent w-full placeholder: text-dark-600 h-11 text-14-medium rounded-md px-3 outline-none !important;
+    @apply overflow-hidden border-transparent w-full placeholder:text-dark-600  h-11 text-14-medium rounded-md px-3 outline-none !important;
   }
 }
 
