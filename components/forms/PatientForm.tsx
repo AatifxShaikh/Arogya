@@ -7,12 +7,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Form } from "@/components/ui/form";
-// import { createUser } from "@/lib/actions/patient.actions";
+import { createUser } from "@/lib/actions/patient.actions";
 import { UserFormValidation } from "@/lib/validation";
 
 import "react-phone-number-input/style.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
+// import { createUser } from "@/lib/actions/patient.actions";
 
 
 const formSchema = z.object({
@@ -38,14 +39,15 @@ export const PatientForm = () => {
         setIsLoading(true)
 
         try {
-            // const userData={name,email,phone}
-            // const user=await createUser(userData)
-            // if (user) router.push(`/patients/${User.$id}/register`)
+            const userData={name,email,phone}
+            const user=await createUser(userData)
+            if (user) router.push(`/patients/${user.$id}/register`)
 
         } catch (error) {
             console.log(error);
 
         }
+
     }
 
 
