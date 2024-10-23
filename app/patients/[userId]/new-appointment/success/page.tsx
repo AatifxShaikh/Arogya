@@ -22,7 +22,7 @@ const RequestSuccess = async ({
             <div className="success-img">
                 <Link href="/">
                     <Image
-                        src="/assets/icons/logo-full.svg"
+                        src="/assets/icons/arogya.png"
                         height={1000}
                         width={1000}
                         alt="logo"
@@ -38,7 +38,7 @@ const RequestSuccess = async ({
                         alt="success"
                     />
                     <h2 className="header mb-6 max-w-[600px] text-center">
-                        Your <span className="text-green-500">appointment request</span> has
+                        Your <span className="text-purple-400">appointment request</span> has
                         been successfully submitted!
                     </h2>
                     <p>We&apos;ll be in touch shortly to confirm.</p>
@@ -73,7 +73,7 @@ const RequestSuccess = async ({
                     </Link>
                 </Button>
 
-                <p className="copyright">© 2024 CarePluse</p>
+                <p className="copyright">© 2024 Arogya</p>
             </div>
         </div>
     );

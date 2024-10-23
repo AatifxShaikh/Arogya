@@ -90,7 +90,7 @@ export const PatientForm = () => {
                     placeholder="(555) 123-4567"
                 />
 
-                <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+                <SubmitButton className="bg-purple-500 w-full" isLoading={isLoading}>Get Started</SubmitButton>
             </form>
         </Form>
     );

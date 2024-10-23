@@ -21,6 +21,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
+//import emailjs from 'emailjs/browser';
 
 export const AppointmentForm = ({
     userId,
@@ -71,6 +72,8 @@ export const AppointmentForm = ({
         }
 
         try {
+            console.log("CREATE APPOINTMENT TYPE: ", type)
+            console.log("CREATE APPOINTMENT PATIENT ID: ", patientId)
             if (type === "create" && patientId) {
                 const appointment = {
                     userId,
@@ -82,6 +85,7 @@ export const AppointmentForm = ({
                     note: values.note,
                 };
 
+                console.log("CREATE APPOINTMENT : ", appointment)
                 const newAppointment = await createAppointment(appointment);
 
                 if (newAppointment) {
@@ -91,9 +95,11 @@ export const AppointmentForm = ({
                     );
                 }
             } else {
+                const clientTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 const appointmentToUpdate = {
                     userId,
                     appointmentId: appointment?.$id!,
+                    timeZone: clientTimezone,
                     appointment: {
                         primaryPhysician: values.primaryPhysician,
                         schedule: new Date(values.schedule),
@@ -106,6 +112,9 @@ export const AppointmentForm = ({
                 const updatedAppointment = await updateAppointment(appointmentToUpdate);
 
                 if (updatedAppointment) {
+                    const message = `Greetings from Arogya. ${type === "schedule" ? `Your appointment is confirmed` : `We regret to inform that your appointment is cancelled. Reason:  ${values.cancellationReason}`}.`;
+                    //await sendEmailNotification(message);
+
                     setOpen && setOpen(false);
                     form.reset();
                 }

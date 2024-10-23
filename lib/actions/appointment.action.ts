@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { ID, Query } from "node-appwrite";
-
-import { Appointment } from "@/types/appwrite.types";
+//import emailjs from 'emailjs/browser';
+import { Appointment, Patient } from "@/types/appwrite.types";
 
 import {
     APPOINTMENT_COLLECTION_ID,
@@ -41,7 +41,25 @@ export const getRecentAppointmentList = async () => {
             [Query.orderDesc("$createdAt")]
         );
 
+        // const scheduledAppointments = (
+        //   appointments.documents as Appointment[]
+        // ).filter((appointment) => appointment.status === "scheduled");
 
+        // const pendingAppointments = (
+        //   appointments.documents as Appointment[]
+        // ).filter((appointment) => appointment.status === "pending");
+
+        // const cancelledAppointments = (
+        //   appointments.documents as Appointment[]
+        // ).filter((appointment) => appointment.status === "cancelled");
+
+        // const data = {
+        //   totalCount: appointments.total,
+        //   scheduledCount: scheduledAppointments.length,
+        //   pendingCount: pendingAppointments.length,
+        //   cancelledCount: cancelledAppointments.length,
+        //   documents: appointments.documents,
+        // };
 
         const initialCounts = {
             scheduledCount: 0,
@@ -83,26 +101,26 @@ export const getRecentAppointmentList = async () => {
 };
 
 //  SEND SMS NOTIFICATION
-// export const sendSMSNotification = async (userId: string, content: string) => {
-//     try {
-//         // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
-//         const message = await messaging.createSms(
-//             ID.unique(),
-//             content,
-//             [],
-//             [userId]
-//         );
-//         return parseStringify(message);
-//     } catch (error) {
-//         console.error("An error occurred while sending sms:", error);
-//     }
-// };
+export const sendSMSNotification = async (userId: string, content: string) => {
+    try {
+        // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
+        const message = await messaging.createSms(
+            ID.unique(),
+            content,
+            [],
+            [userId]
+        );
+        return parseStringify(message);
+    } catch (error) {
+        console.error("An error occurred while sending sms:", error);
+    }
+};
 
-// //  UPDATE APPOINTMENT
+//  UPDATE APPOINTMENT
 export const updateAppointment = async ({
     appointmentId,
     userId,
-
+    //timeZone,
     appointment,
     type,
 }: UpdateAppointmentParams) => {
@@ -117,8 +135,10 @@ export const updateAppointment = async ({
 
         if (!updatedAppointment) throw Error;
 
-        //const smsMessage = `Greetings from CarePulse. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, timeZone).dateTime} with Dr. ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, timeZone).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
-        //await sendSMSNotification(userId, smsMessage);
+        const smsMessage = `Greetings from Arogya. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!).dateTime} with Dr. ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+        await sendSMSNotification(userId, smsMessage);
+        //await sendEmailNotification()
+
 
         revalidatePath("/admin");
         return parseStringify(updatedAppointment);
@@ -127,7 +147,7 @@ export const updateAppointment = async ({
     }
 };
 
-// // GET APPOINTMENT
+// GET APPOINTMENT
 export const getAppointment = async (appointmentId: string) => {
     try {
         const appointment = await databases.getDocument(
@@ -144,3 +164,18 @@ export const getAppointment = async (appointmentId: string) => {
         );
     }
 };
+
+// export const sendEmailNotification = async (content: string, toName: string, toEmail: string) => {
+//     await emailjs.send(
+//         process.env.NEXT_PUBLIC_SERVICEID || "",
+//         process.env.NEXT_PUBLIC_TEMPLATEID || "",
+//         {
+//             from_name: "Arogya",
+//             from_email: "o98679014@gmail.com",
+//             to_name: toName,
+//             to_email: toEmail,
+//             message: content,
+//         },
+//         process.env.NEXT_PUBLIC_APIKEY
+//     );
+// }
