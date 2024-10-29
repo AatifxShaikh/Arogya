@@ -1,5 +1,3 @@
-Here's a sample `README.md` file for your healthcare patient management application:
-
 ---
 
 # Healthcare Patient Management Application
