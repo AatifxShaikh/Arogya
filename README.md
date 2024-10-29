@@ -94,13 +94,21 @@ Create a `.env` file at the root of your project and add the following:
 
 ```plaintext
 # Appwrite Configuration
-NEXT_PUBLIC_APPWRITE_ENDPOINT=<Your Appwrite API Endpoint>
-NEXT_PUBLIC_APPWRITE_PROJECT_ID=<Your Appwrite Project ID>
-APPWRITE_API_KEY=<Your Appwrite API Key>
+NEXT_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+NEXT_PUBLIC_APPWRITE_PROJECT_ID=your_project_id
+APPWRITE_API_KEY=your_api_key
+DATABASE_ID=your_database_id
+PATIENT_COLLECTION_ID=your_patient_collection_id
+DOCTOR_COLLECTION_ID=your_doctor_collection_id
+APPOINTMENT_COLLECTION_ID=your_appointment_collection_id
+NEXT_PUBLIC_BUCKET_ID=your_bucket_id
 
+# Admin Configuration
+NEXT_PUBLIC_ADMIN_PASSKEY=your_admin_passkey
 
 # Sentry Configuration
-NEXT_PUBLIC_SENTRY_DSN=<Your Sentry DSN>
+SENTRY_AUTH_TOKEN=your_sentry_auth_token
+
 ```
 
 Ensure all variables are configured to successfully connect with Appwrite, Twilio, and Sentry.
